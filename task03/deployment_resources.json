@@ -43,10 +43,11 @@
           "lambda_name": "hello_world",
           "integration_type": "lambda",
           "enable_proxy": true,
-          "method_responses": {
+          "authorization_type": "NONE",
+          "integration_responses": {
             "200": {
-              "response_models": {
-                "application/json": "Empty"
+              "response_templates": {
+                "application/json": "$input.json('$')"
               }
             }
           }
