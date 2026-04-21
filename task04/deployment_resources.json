@@ -1,75 +1,17 @@
 {
-  "lambda-basic-execution": {
-    "policy_content": {
-      "Statement": [
-        {
-          "Action": [
-            "logs:CreateLogGroup",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents"
-          ],
-          "Effect": "Allow",
-          "Resource": "*"
-        }
-      ],
-      "Version": "2012-10-17"
-    },
-    "resource_type": "iam_policy",
-    "tags": {}
-  },
-  "sqs_queue_policy": {
-    "policy_content": {
-      "Statement": [
-        {
-          "Action": [
-            "sqs:ReceiveMessage",
-            "sqs:DeleteMessage",
-            "sqs:GetQueueAttributes",
-            "sqs:ChangeMessageVisibility"
-          ],
-          "Effect": "Allow",
-          "Resource": "*"
-        }
-      ],
-      "Version": "2012-10-17"
-    },
-    "resource_type": "iam_policy",
-    "tags": {}
-  },
-  "sns_topic_policy": {
-    "policy_content": {
-      "Statement": [
-        {
-          "Action": [
-            "sns:GetTopicAttributes",
-            "sns:Subscribe"
-          ],
-          "Effect": "Allow",
-          "Resource": "*"
-        }
-      ],
-      "Version": "2012-10-17"
-    },
-    "resource_type": "iam_policy",
-    "tags": {}
-  },
   "sqs_handler-role": {
-    "predefined_policies": [],
-    "principal_service": "lambda",
-    "custom_policies": [
-      "lambda-basic-execution",
-      "sqs_queue_policy"
+    "predefined_policies": [
+      "AWSLambdaSQSQueueExecutionRole"
     ],
+    "principal_service": "lambda",
     "resource_type": "iam_role",
     "tags": {}
   },
   "sns_handler-role": {
-    "predefined_policies": [],
-    "principal_service": "lambda",
-    "custom_policies": [
-      "lambda-basic-execution",
-      "sns_topic_policy"
+    "predefined_policies": [
+      "AWSLambdaSNSTopicExecutionRole"
     ],
+    "principal_service": "lambda",
     "resource_type": "iam_role",
     "tags": {}
   },
